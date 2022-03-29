@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderFlix />
+    <HeaderFlix @ricerca="setValue" />
     <MainFlix />
   </div>
 </template>
@@ -18,10 +18,22 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      nameToSearch: "",
+    };
   },
 
-  methods: {},
+  methods: {
+    setValue(value) {
+      this.nameToSearch = value;
+      console.log(value);
+      console.log(this.nameToSearch);
+    },
+  },
+  // Importazione Chiave AXios
+
+  // https://api.themoviedb.org/3/search/movie?api_key=QUILATUAKEY&language=it-IT&query=QUILASTRINGADIRICERCA
+  // axios.get('https://api.themoviedb.org/3/search/movie?api_key=QUILATUAKEY&query=' + nomevariabile)
 
   computed: {},
 };
