@@ -24,4 +24,17 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  padding-top: 2rem;
+  background-color: black;
+
+  h1 {
+    color: red;
+  }
+}
+</style>
