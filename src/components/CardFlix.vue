@@ -4,11 +4,7 @@
     @mouseover="showImage = false"
     @mouseleave="showImage = true"
   >
-    <img
-      v-show="showImage === true"
-      :src="'http://image.tmdb.org/t/p/w500/' + cardData.poster_path"
-      :alt="cardData.title"
-    />
+    <img v-show="showImage === true" :src="setImage()" :alt="cardData.title" />
     <ul class="card" v-show="showImage === false">
       <li>
         <h3>Titolo:</h3>
@@ -50,7 +46,7 @@
 
 <script>
 import StarRating from "vue-star-rating";
-
+import coverNone from "../assets/cover.jpg";
 export default {
   name: "CardFlix",
 
@@ -76,6 +72,14 @@ export default {
       );
       return convertedRating;
     },
+
+    setImage() {
+      if (this.cardData.poster_path == null) {
+        return coverNone;
+      } else {
+        return "http://image.tmdb.org/t/p/w500/" + this.cardData.poster_path;
+      }
+    },
   },
 };
 </script>
@@ -83,7 +87,7 @@ export default {
 <style scoped lang="scss">
 .container {
   background-color: black;
-  flex-basis: calc(100% / 4 - 2px);
+  flex-basis: calc(100% / 5 - 2px);
   align-self: center;
   display: flex;
 
