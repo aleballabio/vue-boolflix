@@ -6,10 +6,12 @@
         type="text"
         name="searchBar"
         v-model="stringValue"
-        class=""
+        class="input-search"
         @keyup.enter="$emit('ricerca', stringValue)"
       />
-      <button @click="$emit('ricerca', stringValue)">Search</button>
+      <button id="button-search" @click="$emit('ricerca', stringValue)">
+        Search
+      </button>
     </label>
   </header>
 </template>
@@ -36,6 +38,13 @@ header {
 
   h1 {
     color: red;
+  }
+
+  #button-search {
+    margin-left: 1rem;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 </style>

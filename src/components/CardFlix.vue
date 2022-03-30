@@ -1,6 +1,15 @@
 .<template>
-  <div class="container">
-    <ul class="card">
+  <div
+    class="container"
+    @mouseover="showImage = false"
+    @mouseleave="showImage = true"
+  >
+    <img
+      v-show="showImage === true"
+      :src="'http://image.tmdb.org/t/p/w500/' + cardData.poster_path"
+      :alt="cardData.title"
+    />
+    <ul class="card" v-show="showImage === false">
       <li>
         <h3>Titolo:</h3>
         {{ cardData.title }}
@@ -13,16 +22,22 @@
 
       <li>
         <h3>Lingua Originale:</h3>
-        <lang-flag
-          :iso="cardData.original_language"
-          squared="false"
-          class="flag"
-        />
+        <lang-flag :iso="cardData.original_language" class="flag" />
       </li>
 
       <li>
         <h3>Voto:</h3>
-        {{ cardData.vote_average }}
+        <star-rating
+          :rating="ratingFiveNumber()"
+          :inline="true"
+          :star-size="15"
+          :read-only="true"
+          :increment="1"
+          :max-rating="5"
+          :round-start-rating="true"
+          :show-rating="false"
+        >
+        </star-rating>
       </li>
 
       <li>
@@ -34,10 +49,34 @@
 </template>
 
 <script>
+import StarRating from "vue-star-rating";
+
 export default {
   name: "CardFlix",
+
+  components: {
+    StarRating,
+  },
+  data() {
+    return {
+      showImage: true,
+      ratingFiveStars: this.cardData.vote_average,
+    };
+  },
   props: {
     cardData: Object,
+  },
+
+  methods: {
+    ratingFiveNumber() {
+      let maxVote = 10;
+      let wantedVote = 5;
+      let convertedRating = Math.ceil(
+        (this.cardData.vote_average * wantedVote) / maxVote
+      );
+      console.log((this.cardData.vote_average * wantedVote) / maxVote);
+      return convertedRating;
+    },
   },
 };
 </script>
@@ -45,18 +84,24 @@ export default {
 <style scoped lang="scss">
 .container {
   background-color: black;
+  flex-basis: 300px;
+  flex-grow: 1;
   display: flex;
-  padding: 1rem;
-  border: solid 1px white;
-  flex-basis: calc(100% / 6 - 2rem);
 
-  padding-top: 4rem;
+  border: solid 1px white;
   margin: 1rem;
   height: 500px;
+
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+  }
 }
 
 .card {
@@ -65,6 +110,10 @@ export default {
   justify-content: flex-start;
   align-items: flex-start;
   list-style: none;
+  padding-top: 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 4rem;
 
   li {
     font-size: 0.9rem;
@@ -72,6 +121,7 @@ export default {
 
     h3 {
       font-size: inherit;
+      padding-right: 0.3rem;
     }
   }
 }

@@ -6,6 +6,10 @@
       :data-series="series"
       :search="nameToSearch"
     />
+    <link
+      rel="stylesheet"
+      href="bower_components/css-star-rating/dist/css/star-rating.css"
+    />
   </div>
 </template>
 
