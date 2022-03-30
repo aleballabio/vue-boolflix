@@ -74,7 +74,6 @@ export default {
       let convertedRating = Math.ceil(
         (this.cardData.vote_average * wantedVote) / maxVote
       );
-      console.log((this.cardData.vote_average * wantedVote) / maxVote);
       return convertedRating;
     },
   },
@@ -84,12 +83,15 @@ export default {
 <style scoped lang="scss">
 .container {
   background-color: black;
-  flex-basis: 300px;
-  flex-grow: 1;
+  flex-basis: calc(100% / 4 - 2px);
+  align-self: center;
   display: flex;
 
-  border: solid 1px white;
-  margin: 1rem;
+  border: solid 1px transparent;
+  border-radius: 2px;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom: 4rem;
   height: 500px;
 
   overflow-y: scroll;
