@@ -12,6 +12,15 @@
       </li>
 
       <li>
+        <h3>Lingua Originale:</h3>
+        <lang-flag
+          :iso="cardData.original_language"
+          squared="false"
+          class="flag"
+        />
+      </li>
+
+      <li>
         <h3>Voto:</h3>
         {{ cardData.vote_average }}
       </li>
@@ -69,5 +78,9 @@ export default {
 
 .container::-webkit-scrollbar {
   display: none;
+}
+
+.flag {
+  margin-left: 0.5rem;
 }
 </style>
