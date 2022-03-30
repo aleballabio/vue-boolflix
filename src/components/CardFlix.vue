@@ -37,7 +37,7 @@
       </li>
 
       <li>
-        <h3>Overview:</h3>
+        <h3 v-show="cardData.overview != ''">Overview:</h3>
         {{ cardData.overview }}
       </li>
     </ul>
