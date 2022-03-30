@@ -9,6 +9,7 @@
         class=""
         @keyup.enter="$emit('ricerca', stringValue)"
       />
+      <button @click="$emit('ricerca', stringValue)">Search</button>
     </label>
   </header>
 </template>

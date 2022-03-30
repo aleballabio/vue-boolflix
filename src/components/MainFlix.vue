@@ -1,11 +1,21 @@
 <template>
   <main>
+    <h1 v-show="search !== ''">Film</h1>
+    <h2 v-show="search != ''" v-if="dataMovies.length < 1">
+      Non ci sono risultati
+    </h2>
+
     <div class="container-cards">
-      <CardFlix
-        v-for="cardMovies in dataMovies"
-        :key="cardMovies.id"
-        :card-movies-data="cardMovies"
-      />
+      <CardFlix v-for="card in dataMovies" :key="card.id" :card-data="card" />
+    </div>
+
+    <h1 v-show="search != ''">Serie TV</h1>
+    <h2 v-show="search != ''" v-if="dataSeries.length < 1">
+      Non ci sono risultati
+    </h2>
+
+    <div class="container-cards">
+      <CardFlix v-for="card in dataSeries" :key="card.id" :card-data="card" />
     </div>
   </main>
 </template>
@@ -21,6 +31,8 @@ export default {
 
   props: {
     dataMovies: Array,
+    dataSeries: Array,
+    search: String,
   },
 };
 </script>
@@ -34,6 +46,16 @@ main {
   .container-cards {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  h1 {
+    color: white;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  h2 {
+    color: rgb(173, 173, 173);
   }
 }
 </style>

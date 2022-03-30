@@ -3,22 +3,22 @@
     <ul class="card">
       <li>
         <h3>Titolo:</h3>
-        {{ cardMoviesData.title }}
+        {{ cardData.title }}
       </li>
 
       <li>
         <h3>Titolo Originale:</h3>
-        {{ cardMoviesData.original_title }}
+        {{ cardData.original_title }}
       </li>
 
       <li>
         <h3>Voto:</h3>
-        {{ cardMoviesData.vote_average }}
+        {{ cardData.vote_average }}
       </li>
 
       <li>
         <h3>Overview:</h3>
-        {{ cardMoviesData.overview }}
+        {{ cardData.overview }}
       </li>
     </ul>
   </div>
@@ -28,7 +28,7 @@
 export default {
   name: "CardFlix",
   props: {
-    cardMoviesData: Object,
+    cardData: Object,
   },
 };
 </script>
