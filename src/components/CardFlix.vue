@@ -80,7 +80,7 @@ export default {
       if (this.cardData.poster_path == null) {
         return coverNone;
       } else {
-        return "http://image.tmdb.org/t/p/w500/" + this.cardData.poster_path;
+        return "http://image.tmdb.org/t/p/w400/" + this.cardData.poster_path;
       }
     },
   },
